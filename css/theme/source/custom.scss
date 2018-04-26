@@ -1,0 +1,233 @@
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #2c313e;
+$shadowColor: #60569c;
+$shadowColorAlt: #5c6443;
+
+$mainColor: #ebecf0;
+$headingColor: #ebecf0;
+
+$mainFontSize: 38px;
+$mainFont: Soleto, soleto, Helvetica, sans-serif;
+$headingFont: $mainFont;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 700;
+$linkColor: lighten($shadowColor, 40%);
+$linkColorHover: lighten($linkColor, 10%);
+$selectionBackgroundColor: lighten($linkColor, 20%);
+
+$heading1Size: 2em;
+$heading2Size: 1.75em;
+$heading3Size: 1.25em;
+$heading4Size: 1em;
+
+$blockMargin: $mainFontSize / 1.25;
+$headingMargin: 0 0 $blockMargin;
+
+$accentColor: mix(#dac935, $mainColor, 15%);
+$codeColor: mix($shadowColorAlt, $mainColor, 33%);
+
+section.has-light-background {
+  &,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #2c313e;
+  }
+}
+
+body {
+  font-family: Soleto, soleto, Helvetica, sans-serif !important;
+}
+
+.reveal section {
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
+  font-feature-settings: liga frac ordn;
+
+  h1 {
+    font-weight: normal;
+  }
+
+  h2 {
+    color: $accentColor;
+    text-shadow: 1px 1px 0 $shadowColorAlt,
+                 2px 2px 0 $shadowColorAlt,
+                 3px 3px 0 $shadowColorAlt,
+                 4px 4px 0 $shadowColorAlt;
+
+   em {
+    display: block;
+    color: $mainColor;
+    text-shadow: 1px 1px 0 $shadowColor,
+                 2px 2px 0 $shadowColor,
+                 3px 3px 0 $shadowColor,
+                 4px 4px 0 $shadowColor;
+    font-style: normal;
+    font-weight: inherit;
+   }
+  }
+
+  h1,
+  h3 {
+    text-shadow: 1px 1px 0 $shadowColor,
+                 2px 2px 0 $shadowColor,
+                 3px 3px 0 $shadowColor,
+                 4px 4px 0 $shadowColor;
+
+    em {
+      display: block;
+      font-style: normal;
+      font-weight: bold;
+      margin-top: 1.25em;
+      color: $accentColor;
+      text-shadow: 1px 1px 0 $shadowColorAlt,
+                   2px 2px 0 $shadowColorAlt,
+                   3px 3px 0 $shadowColorAlt,
+                   4px 4px 0 $shadowColorAlt;
+    }
+  }
+
+  h3 em {
+    margin-top: .5em;
+  }
+
+  h1, h2, h3 {
+    letter-spacing: 0.03125em;
+  }
+
+  p,
+  li {
+    max-width: 16em;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 0 .25em black;
+    text-align: left;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .big-p {
+    font-size: $heading1Size;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .output {
+    background-color: rgba($mainColor, .1);
+    text-align: left;
+    font-size: .8em;
+
+    > * {
+      background-color: $shadowColor;
+    }
+  }
+
+  pre {
+    font-size: .7em;
+  }
+
+  a {
+    text-decoration: dotted underline;
+  }
+
+  table {
+    th {
+      vertical-align: bottom;
+    }
+    th,
+    td {
+      text-align: center;
+    }
+  }
+}
+
+#colophon {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  text-align: center;
+  opacity: .5;
+  font-style: italic;
+  font-size: 26px;
+  letter-spacing: .0625em;
+  z-index: 1;
+}
+
+code {
+  font-family: Operator Mono, Input Code, Source Code Pro, monospace !important;
+  color: $codeColor;
+
+  :not(pre) > & {
+    &::before,
+    &::after {
+      content: '`';
+    }
+  }
+
+  h1 &,
+  h2 &,
+  h3 & {
+    color: inherit;
+  }
+}
+
+.col-wrapper {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+
+  > * {
+    flex: 0 1 48%;
+    width: 48%;
+  }
+}
+
+[contenteditable] {
+  &:focus {
+    outline: none;
+  }
+}
+
+style[contenteditable] {
+  display: block;
+  font-family: Input Code, Source Code Pro, monospace !important;
+  font-size: .7em;
+  white-space: pre;
+  text-align: left;
+  border: 2px solid $linkColor;
+  padding: 1ch;
+  margin: 1em auto;
+  color: $accentColor;
+
+  &:focus {
+    box-shadow: 0 0 0 2px $linkColor;
+  }
+}
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+
+// ---------------------------------------------

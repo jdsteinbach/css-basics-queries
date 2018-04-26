@@ -1,0 +1,444 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Media / Feature Queries | Little Known CSS Basics</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/custom.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <link rel="stylesheet" href="https://use.typekit.net/mys5clg.css">
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Little Known <br />CSS Basics <em>Media &amp; Feature Queries</em></h1>
+        </section>
+
+        <section>
+          <h1><em>Media &amp; Feature Queries</em> Responsive Sites <i>and</i><br /> Accessibility Wins</h1>
+        </section>
+
+        <section>
+          <h2>What Are CSS Queries?</h2>
+          <p class="fragment">Wrappers</p>
+          <p class="fragment">&hellip; that scope parts of your CSS</p>
+          <p class="fragment">&hellip; based on device data</p>
+        </section>
+
+        <section>
+          <section>
+            <h2>Media Queries: Syntax</h2>
+          </section>
+
+          <section>
+            <h3>HTML</h3>
+            <pre class="fragment"><code class="html">&lt;link
+  rel="stylesheet"
+  media="screen and (min-width: 16em)"
+  href="example.css" /&gt;</code></pre>
+          </section>
+
+          <section>
+            <h3>CSS At-Media</h3>
+            <pre class="fragment"><code class="css">@media screen and (min-width: 16em) {
+  /* example css */
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>CSS At-Import</h3>
+            <pre class="fragment"><code class="css">@import url(example.css)
+  screen and (min-width: 16em);</code></pre>
+          </section>
+
+          <section>
+            <h3>CSS At-Document</h3>
+            <pre class="fragment"><code class="css">@document url(https://example.com) {
+  /* custom CSS for example.com */
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Nesting</h3>
+            <p class="fragment">Preprocessors, PostCSS, and some CSS-in-JS tools allow you to nest a query inside a selector block.</p>
+            <pre class="fragment"><code class="css">.selector {
+  @media (min-width: 500px) {
+    /* CSS */
+  }
+}</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Media Query Options</h2>
+          </section>
+
+          <section>
+            <pre><code>screen and (min-width: 16em)</code></pre>
+            <p class="fragment">media type: <code>screen</code></p>
+            <p class="fragment">media feature: <code>(min-width: 16em)</code></p>
+          </section>
+
+          <section>
+            <h3>Media Types</h3>
+            <p class="fragment center">(Useful Ones)</p>
+            <ul>
+              <li class="fragment">all</li>
+              <li class="fragment">screen</li>
+              <li class="fragment">print</li>
+              <li class="fragment">speech</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Media Types</h3>
+            <p class="fragment center">(Deprecated Ones)</p>
+            <ul>
+              <li class="fragment">braille</li>
+              <li class="fragment">embossed</li>
+              <li class="fragment">projection</li>
+              <li class="fragment">handheld</li>
+              <li class="fragment">tv</li>
+              <li class="fragment">tty</li>
+              <li class="fragment">aural</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Media Features</h3>
+            <p class="fragment">Some key-value pairs</p>
+            <p class="fragment">Some keyword-only</p>
+          </section>
+
+          <section>
+            <h3>Media Features: Screen Width</h3>
+            <ul>
+              <li class="fragment"><code>width</code></li>
+              <li class="fragment"><code>min-width</code></li>
+              <li class="fragment"><code>max-width</code></li>
+              <li class="fragment"><code>device-width</code> 👎</li>
+              <li class="fragment"><code>min-device-width</code> 👎</li>
+              <li class="fragment"><code>max-device-width</code> 👎</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Example: Screen Width</h3>
+            <pre class="fragment"><code class="css">.card {
+  width: 100%;
+}
+@media (min-width: 45em) {
+  .card {
+    width: 50%;
+  }
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Media Features: Screen Height</h3>
+            <ul>
+              <li class="fragment"><code>height</code></li>
+              <li class="fragment"><code>min-height</code></li>
+              <li class="fragment"><code>max-height</code></li>
+              <li class="fragment"><code>device-height</code> 👎</li>
+              <li class="fragment"><code>min-device-height</code> 👎</li>
+              <li class="fragment"><code>max-device-height</code> 👎</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Example: Screen Height</h3>
+            <pre class="fragment"><code class="css">.nav {
+  height: 120px;
+}
+@media (max-width: 45em) {
+  .nav {
+    height: 70px;
+  }
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Media Features: Resolution</h3>
+            <ul>
+              <li class="fragment"><code>resolution</code></li>
+              <li class="fragment"><code>min-resolution</code></li>
+              <li class="fragment"><code>max-resolution</code></li>
+              <li class="fragment"><code>-webkit-device-pixel-ratio</code> 👎</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Example: Resolution</h3>
+            <pre class="fragment"><code class="css">.picture {
+  background-image: url(pic-1x.jpg);
+}
+@media (min-resolution: 150dpi) {
+  .picture {
+    background-image: url(pic-2x.jpg);
+  }
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Media Features: Orientation</h3>
+            <ul>
+              <li class="fragment"><code>portrait</code></li>
+              <li class="fragment"><code>landscape</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Media Features: Aspect Ratio</h3>
+            <ul>
+              <li class="fragment"><code>aspect-ratio</code></li>
+              <li class="fragment"><code>min-aspect-ratio</code></li>
+              <li class="fragment"><code>max-aspect-ratio</code></li>
+              <li class="fragment"><code>device-aspect-ratio</code> 👎</li>
+              <li class="fragment"><code>min-device-aspect-ratio</code> 👎</li>
+              <li class="fragment"><code>max-device-aspect-ratio</code> 👎</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Example: Aspect Ratio</h3>
+            <pre class="fragment"><code class="css">.media--16-9 {
+  height: 100vh;
+  width: 177.778vh;
+}
+@media (min-aspect-ratio: 16/9) {
+  .media--16-9 {
+    height: 56.25vw;
+    width: 100vw;
+  }
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Media Features: Color</h3>
+            <ul>
+              <li class="fragment"><code>color</code> (boolean)</li>
+              <li class="fragment"><code>color-index</code> (integer)</li>
+              <li class="fragment"><code>min-color-index</code> (integer)</li>
+              <li class="fragment"><code>max-color-index</code> (integer)</li>
+              <li class="fragment"><code>monochrome</code> (boolean)</li>
+              <li class="fragment"><code>min-monochrome</code> (integer)</li>
+              <li class="fragment"><code>max-monochrome</code> (integer)</li>
+              <li class="fragment"><code>color-gamut</code> (keyword): <br /><code>srgb</code>, <code>p3</code>, <code>rec2020</code></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Example: Color</h3>
+            <pre class="fragment"><code class="css">a {
+  color: #304FFE; /* custom blue */
+  text-decoration: none;
+}
+@media (monochrome) {
+  a {
+    text-decoration: underline;
+  }
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Media Features: Scan</h3>
+            <ul>
+              <li class="fragment"><code>progressive</code></li>
+              <li class="fragment"><code>interlace</code></li>
+            </ul>
+            <p class="fragment">Just for television sets</p>
+          </section>
+
+          <section>
+            <h3>Media Features: Grid</h3>
+            <ul>
+              <li class="fragment"><code>grid</code> (1 || 0)</li>
+            </ul>
+            <p class="fragment">Screen is bitmap or grid layout</p>
+          </section>
+
+          <section>
+            <h3>Media Features: Future</h3>
+            <ul>
+              <li class="fragment"><code>inverted-colors</code></li>
+              <li class="fragment"><code>pointer</code></li>
+              <li class="fragment"><code>hover</code></li>
+              <li class="fragment"><code>any-pointer</code></li>
+              <li class="fragment"><code>any-hover</code></li>
+              <li class="fragment"><code>light-level</code></li>
+              <li class="fragment"><code>scripting</code></li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Media Queries: Combinations</h2>
+          </section>
+
+          <section>
+            <h3>Operators</h3>
+            <ul>
+              <li class="fragment"><code>and</code></li>
+              <li class="fragment"><code>not</code></li>
+              <li class="fragment"><code>only</code></li>
+              <li class="fragment"><code>,</code> (or)</li>
+              <li class="fragment"><code>()</code> (group logic)</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Operators: Examples</h3>
+            <pre class="fragment"><code class="css">@media screen and (min-width: 600px) { }</code></pre>
+            <pre class="fragment"><code class="css">@media not screen { }</code></pre>
+            <pre class="fragment"><code class="css">@media only screen and (min-width: 600px) { }</code></pre>
+            <pre class="fragment"><code class="css">@media print, (monochrome) { }</code></pre>
+            <pre class="fragment"><code class="css">@media ((min-width: 500px)
+  and (aspect-ratio: portrait)),
+((max-width: 499px)
+  and (aspect-ratio: landscape)) { }</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Media Queries: Advice</h2>
+          </section>
+
+          <section>
+            <h3>Size: Min vs. Max</h3>
+            <p class="fragment">Pick a direction and stick with it (as much as possible).</p>
+            <p class="fragment">Start small and override up.</p>
+          </section>
+
+          <section>
+            <h3>Size: Units</h3>
+            <p class="fragment"><a rel="noreferrer noopener nofollow" target="_blank" href="https://zellwk.com/blog/media-query-units/"><code>em</code></a> is most consistent with user/browser zoom</p>
+            <p class="fragment"><code>px</code> is &ldquo;easiest&rdquo; if you&rsquo;re mixing <code>min</code> and <code>max</code></p>
+          </section>
+
+          <section>
+            <h3>Choosing Breakpoints</h3>
+            <p class="fragment">As much as you can, use the same set of limited breakpoints.</p>
+            <p class="fragment">Let your content decide where breakpoints go.</p>
+          </section>
+
+           <section>
+            <p class="center">Adjust your browser size to the <strong>point</strong> where your content <strong>breaks</strong>.</p>
+            <p class="center"><em>That&rsquo;s a breakpoint.</em></p>
+          </section>
+
+          <section>
+            <h3>Choosing Breakpoints</h3>
+            <p class="fragment">Don&rsquo;t pick breakpoints based on specific devices sizes; <a rel="noreferrer noopener nofollow" target="_blank" href="https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862">put breakpoints in the gaps between clusters of common device sizes</a>.</p>
+            <p class="fragment">Some components will need a breakpoint that&rsquo;s not one of your &ldquo;major&rsquo; breakpoints: create <a rel="noreferrer noopener nofollow" target="_blank" href="https://adactio.com/journal/6044">tweakpoint</a> for that component.</p>
+          </section>
+
+          <section>
+            <h3><i>Not</i> Choosing Breakpoints</h3>
+            <p class="fragment">Watch for a future talk about creating responsive components without media queries!</p>
+            <p class="fragment">Someday container queries might be a thing, but that day is not yet on the calendar.</p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Feature (Supports) Queries</h2>
+          </section>
+
+          <section>
+            <h3>Syntax</h3>
+            <pre><code class="css">@supports (display: grid) {
+  display: grid;
+}</code></pre>
+            <p class="fragment">Accepts CSS property-value pair: the browser evaluates both the property and the value.</p>
+          </section>
+
+          <section>
+            <h3>Syntax</h3>
+            <pre><code class="css">(display: grid) and (filter: blur(3px))</code></pre>
+            <pre><code class="css">(display: grid) or (filter: blur(3px))</code></pre>
+          </section>
+
+          <section>
+            <h3>Detect New Properties</h3>
+            <pre><code class="css">@supports (grid-gap: 20px) {
+  /* Grid styles */
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Detect New Values</h3>
+            <pre><code class="css">@supports (margin: env(safe-area-inset-left)) {
+  /* iPhone X styles */
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Browser Support</h3>
+            <p class="fragment">All modern browsers but IE <a rel="noreferrer noopener nofollow" target="_blank" href="https://caniuse.com/#feat=css-featurequeries">support feature queries</a>.</p>
+            <pre class="fragment"><code class="css">@supports (top: 0) {
+  /* Code for not-IE browsers */
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Feature Queries: Advice</h3>
+            <p class="fragment">Use them when you can do something with new CSS&hellip; <em class="fragment">that requires you to change properties in your fallback/original CSS.</em></p>
+          </section>
+        </section>
+
+        <section>
+          <h2>James Steinbach</h2>
+          <h3>UX Developer at <a rel="noreferrer noopener nofollow" target="_blank" href="https://dockyard.com/blog/authors/james-steinbach">DockYard</a></h3>
+          <h2><code>jdsteinbach</code></h2>
+          <h3><a rel="noreferrer noopener nofollow" target="_blank" href="https://twitter.com">Twitter</a> | <a rel="noreferrer noopener nofollow" target="_blank" href="https://github.com/jdsteinbach">Github</a> | <a href="https://jdsteinbach.com">Blog</a></h3>
+        </section>
+      </div>
+
+      <a id="colophon" href="https://jdsteinbach.com/css-basics-queries/#/">jds.li/queries</a>
+    </div>
+
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        width: 780,
+        transition: 'convex',
+        dependencies: [
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/zoom-js/zoom.js', async: true }
+        ]
+      });
+    </script>
+  </body>
+</html>
