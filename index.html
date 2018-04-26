@@ -32,7 +32,7 @@
         </section>
 
         <section>
-          <h1><em>Media &amp; Feature Queries</em> Responsive Sites <i>and</i><br /> Accessibility Wins</h1>
+          <h2>Responsive Sites <i>and</i><br /> Accessibility Wins</h2>
         </section>
 
         <section>
@@ -79,7 +79,7 @@
             <h3>Nesting</h3>
             <p class="fragment">Preprocessors, PostCSS, and some CSS-in-JS tools allow you to nest a query inside a selector block.</p>
             <pre class="fragment"><code class="css">.selector {
-  @media (min-width: 500px) {
+  @media (min-width: 36em) {
     /* CSS */
   }
 }</code></pre>
@@ -169,7 +169,7 @@
             <pre class="fragment"><code class="css">.nav {
   height: 120px;
 }
-@media (max-width: 45em) {
+@media (max-height: 40em) {
   .nav {
     height: 70px;
   }
@@ -308,13 +308,13 @@
 
           <section>
             <h3>Operators: Examples</h3>
-            <pre class="fragment"><code class="css">@media screen and (min-width: 600px) { }</code></pre>
+            <pre class="fragment"><code class="css">@media screen and (min-width: 36em) { }</code></pre>
             <pre class="fragment"><code class="css">@media not screen { }</code></pre>
-            <pre class="fragment"><code class="css">@media only screen and (min-width: 600px) { }</code></pre>
+            <pre class="fragment"><code class="css">@media only screen and (min-width: 36em) { }</code></pre>
             <pre class="fragment"><code class="css">@media print, (monochrome) { }</code></pre>
-            <pre class="fragment"><code class="css">@media ((min-width: 500px)
+            <pre class="fragment"><code class="css">@media ((min-width: 36em)
   and (aspect-ratio: portrait)),
-((max-width: 499px)
+((max-width: 35.9375em)
   and (aspect-ratio: landscape)) { }</code></pre>
           </section>
         </section>
