@@ -357,8 +357,8 @@
 
           <section>
             <h3>Choosing Breakpoints</h3>
-            <p class="fragment">Don&rsquo;t pick breakpoints based on specific devices sizes; <a rel="noreferrer noopener nofollow" target="_blank" href="https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862">put breakpoints in the gaps between clusters of common device sizes</a>.</p>
-            <p class="fragment">Some components will need a breakpoint that&rsquo;s not one of your &ldquo;major&rsquo; breakpoints: create <a rel="noreferrer noopener nofollow" target="_blank" href="https://adactio.com/journal/6044">tweakpoint</a> for that component.</p>
+            <p class="fragment">Don&rsquo;t pick breakpoints based on specific device sizes; <a rel="noreferrer noopener nofollow" target="_blank" href="https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862">put breakpoints in the gaps between clusters of common device sizes</a>.</p>
+            <p class="fragment">Some components will need a breakpoint that&rsquo;s not one of your &ldquo;major&rdquo; breakpoints: create <a rel="noreferrer noopener nofollow" target="_blank" href="https://adactio.com/journal/6044">tweakpoint</a> for that component.</p>
           </section>
 
           <section>
@@ -370,7 +370,7 @@
           <section>
             <h3>Media Queries in JavaScript</h3>
             <p class="fragment"><code>Window.matchMedia()</code></p>
-            <pre class="fragment"><code class="js">var mq = window.matchMedia("min-width: 36em");
+            <pre class="fragment"><code class="js">var mq = matchMedia("(min-width: 36em)");
 if (mq.matches) {
   // do some code specific to that breakpoint
 }</code></pre>
@@ -379,7 +379,7 @@ if (mq.matches) {
           <section>
             <h3>Media Queries in JavaScript</h3>
             <p class="fragment"><code>MediaQueryList.addListener()</code></p>
-            <pre class="fragment"><code class="js">var mq = window.matchMedia("min-width: 36em");
+            <pre class="fragment"><code class="js">var mq = matchMedia("(min-width: 36em)");
 mq.addListener(mqTriggeredFunction);
 function mqTriggeredFunction(event) {
   if (event.matches) {
