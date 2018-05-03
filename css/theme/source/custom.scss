@@ -148,7 +148,7 @@ body {
   }
 
   a {
-    text-decoration: dotted underline;
+    text-decoration: underline;
   }
 
   table {
@@ -159,6 +159,13 @@ body {
     td {
       text-align: center;
     }
+  }
+
+  .twitter-tweet {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 320px !important;
+    transform: scale(2) translateY(50%) !important;
   }
 }
 

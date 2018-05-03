@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Media / Feature Queries | Little Known CSS Basics</title>
+    <title>Media and Feature Queries | Little Known CSS Basics</title>
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/custom.css">
@@ -28,7 +28,7 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h1>Little Known <br />CSS Basics <em>Media &amp; Feature Queries</em></h1>
+          <h1>Little Known <br />CSS Basics <em>Media (&amp; Other) Queries</em></h1>
         </section>
 
         <section data-background="https://jdsteinbach.com/css-basics-queries/images/media-queries.jpg">
@@ -233,6 +233,7 @@
     width: 100vw;
   }
 }</code></pre>
+            <p class="fragment center"><a href="https://codepen.io/jdsteinbach/pen/QrEYdO">Codepen</a></p>
           </section>
 
           <section>
@@ -351,6 +352,10 @@
           </section>
 
           <section>
+            <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Friendly reminder that frameworks don’t set breakpoint values: content does.</p>&mdash; James Steinbach (@jdsteinbach) <a href="https://twitter.com/jdsteinbach/status/592713026538700800?ref_src=twsrc%5Etfw">April 27, 2015</a></blockquote>
+          </section>
+
+          <section>
             <h3>Choosing Breakpoints</h3>
             <p class="fragment">Don&rsquo;t pick breakpoints based on specific devices sizes; <a rel="noreferrer noopener nofollow" target="_blank" href="https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862">put breakpoints in the gaps between clusters of common device sizes</a>.</p>
             <p class="fragment">Some components will need a breakpoint that&rsquo;s not one of your &ldquo;major&rsquo; breakpoints: create <a rel="noreferrer noopener nofollow" target="_blank" href="https://adactio.com/journal/6044">tweakpoint</a> for that component.</p>
@@ -361,11 +366,38 @@
             <p class="fragment">Watch for a future talk about creating responsive components without media queries!</p>
             <p class="fragment">Someday container queries might be a thing, but that day is not yet on the calendar.</p>
           </section>
+
+          <section>
+            <h3>Media Queries in JavaScript</h3>
+            <p class="fragment"><code>Window.matchMedia()</code></p>
+            <pre class="fragment"><code class="js">var mq = window.matchMedia("min-width: 36em");
+if (mq.matches) {
+  // do some code specific to that breakpoint
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>Media Queries in JavaScript</h3>
+            <p class="fragment"><code>MediaQueryList.addListener()</code></p>
+            <pre class="fragment"><code class="js">var mq = window.matchMedia("min-width: 36em");
+mq.addListener(mqTriggeredFunction);
+function mqTriggeredFunction(event) {
+  if (event.matches) {
+    // do some code specific to that breakpoint
+  }
+}</code></pre>
+          </section>
         </section>
 
         <section>
           <section>
             <h2>Feature (Supports) Queries</h2>
+          </section>
+
+          <section>
+            <h3>The Old Way</h3>
+            <p class="fragment center"><a href="https://modernizr.com"><code>modernizr.js</code></a></p>
+            <p class="fragment">Load a JS file that tests for all the conditions/features you need then adds a class to `html` so you can scope CSS selectors.</p>
           </section>
 
           <section>
@@ -432,6 +464,7 @@
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
     <script>
       // More info about config & dependencies:
